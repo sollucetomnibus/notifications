@@ -2,7 +2,7 @@
   "name": "@sollucetomnibus/notifications",
   "version": "0.0.1-beta.01",
   "description": "React Toast Notifications",
-  "homepage": "https://github.com/sollucetomnibus",
+  "homepage": "https://sollucetomnibus.github.io/notifications/",
   "main": "index.js",
   "types": "index.d.ts",
   "author": "Furkan MT (https://github.com/furcan)",

@@ -1,8 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { NotificationsProvider } from '../src/components';
-import { useNotificationsUIMethods } from '../src/hooks';
+import {
+  NotificationsProvider,
+  useNotificationsUIMethods,
+} from '../src';
 
 const App: React.FC = () => {
   const { add } = useNotificationsUIMethods();
