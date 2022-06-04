@@ -1,0 +1,48 @@
+{
+  "name": "@sollucetomnibus/notifications",
+  "version": "0.0.1-beta.01",
+  "description": "React Toast Notifications",
+  "homepage": "https://github.com/sollucetomnibus",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "author": "Furkan MT (https://github.com/furcan)",
+  "contributors": [
+    "Furkan MT (https://github.com/furcan)"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  ],
+  "keywords": [
+    "notification",
+    "notifications",
+    "notiflix",
+    "notify",
+    "toast",
+    "alert",
+    "react toast",
+    "react notifications",
+    "react toast notifications"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sollucetomnibus/notifications.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sollucetomnibus/notifications/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.0",
+    "@types/node": "^17.0.39",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "jest": "^28.1.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-test-renderer": "^18.1.0",
+    "ts-jest": "^28.0.3",
+    "typescript": "^4.7.2"
+  }
+}
