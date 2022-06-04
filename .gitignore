@@ -12,6 +12,9 @@ yarn-error.log*
 /dist
 .dist
 
+# Storybook
+.storybook-build
+
 # Misc
 .DS_Store
 *.DS_Store
