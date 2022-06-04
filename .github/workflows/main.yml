@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
 
       - name: Install and Build 🔧
         run: |
@@ -16,7 +16,7 @@ jobs:
           yarn storybook:build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.3.3
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: github-pages
           folder: .storybook-build
