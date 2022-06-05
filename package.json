@@ -62,7 +62,7 @@
     "react-dom": "^18.1.0"
   },
   "scripts": {
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint": "eslint .eslintrc.js 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o .storybook-build",
     "start": "yarn lint && yarn storybook",
