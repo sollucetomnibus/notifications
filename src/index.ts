@@ -1,3 +1,3 @@
 export { NotificationsProvider } from './components';
-export { uuidV4 } from './helpers';
-export { useNotificationsUIMethods } from './hooks';
+export { useNotifications } from './hooks';
+export * from './types';
