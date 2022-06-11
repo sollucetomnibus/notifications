@@ -16,12 +16,12 @@ jobs:
         run: |
           yarn
 
-      - name: Lint and Test 🔍
+      - name: Library => Lint and Test 🔍
         run: |
-          yarn lint
+          yarn lint:dev
           yarn test
 
-      - name: Build 🔧
+      - name: Storybook => Build 🔧
         run: |
           yarn storybook:build
 

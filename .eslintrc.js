@@ -22,7 +22,10 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    'indent': ['error', 2],
+    'react/prop-types': 0,
+    'no-console': ['warn'], // TODO, after dev, will be error
+    // 'no-console': ['error'],
+    'indent': ['error', 2, { 'SwitchCase': 1 }],
     'linebreak-style': ['error', 'unix'],
     'quotes': ['error', 'single', {
       'avoidEscape': true,
