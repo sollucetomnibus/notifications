@@ -1,6 +1,6 @@
 import {
   INotificationsInitState,
-  IUseNotificationsReturn,
+  TUseNotificationsReturn,
 } from '../types';
 import {
   useNotificationsUIMethods,
@@ -20,6 +20,6 @@ export {
 
 export const useNotifications = (
   initOptions: INotificationsInitState = {},
-): IUseNotificationsReturn => ({
+): TUseNotificationsReturn => ({
   ...useNotificationsUIMethods(initOptions),
 });

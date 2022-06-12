@@ -45,4 +45,4 @@ export interface IUseNotificationsUIMethodsReturn {
   remove: (id: string) => void;
 }
 
-export type IUseNotificationsReturn = IUseNotificationsUIMethodsReturn;
+export type TUseNotificationsReturn = IUseNotificationsUIMethodsReturn;
