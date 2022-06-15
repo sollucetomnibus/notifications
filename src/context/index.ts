@@ -7,17 +7,19 @@ import {
 } from '../types';
 
 export const notificationsInitState: Required<INotificationsInitState> = {
+  autoRemoveDelay: 4500,
   classNameWrapper: 'notifications-wrapper',
   classNameItems: 'notifications-items',
-  timeout: 4500,
-  placement: 'bottom-right',
   zIndex: 1918,
-  offset: '12px',
+  placement: 'bottom-right',
   width: '320px',
+  offset: '12px',
   opacity: 1,
-  borderRadius: '12px',
-  backgroundOverlay: false,
+  hasBackgroundOverlay: false,
   backgroundOverlayColor: 'rgba(0, 0, 0, 0.25)',
+  borderRadius: '12px',
+  hasAnimation: true,
+  animationDurationAsMilliseconds: 360,
 };
 
 export const notificationsUIState: TNotificationsUIState = [];

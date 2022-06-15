@@ -4,20 +4,27 @@ export type TNotificationsInitStateColor = `rgb(${number}, ${number}, ${number})
   | `rgba(${number}, ${number}, ${number}, ${number})`
   | `#${string}`;
 
-export type TNotificationsInitStatePlacement = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export type TNotificationsInitStatePlacement = 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
 
 export interface INotificationsInitState {
+  autoRemoveDelay?: number;
   classNameWrapper?: string;
   classNameItems?: string;
-  timeout?: number;
-  placement?: TNotificationsInitStatePlacement;
   zIndex?: number;
-  offset?: TNotificationsInitStateUnit;
+  placement?: TNotificationsInitStatePlacement;
   width?: TNotificationsInitStateUnit;
+  offset?: TNotificationsInitStateUnit;
   opacity?: number;
-  borderRadius?: TNotificationsInitStateUnit;
-  backgroundOverlay?: boolean;
+  hasBackgroundOverlay?: boolean;
   backgroundOverlayColor?: TNotificationsInitStateColor;
+  borderRadius?: TNotificationsInitStateUnit;
+  hasAnimation?: boolean;
+  animationDurationAsMilliseconds?: number;
   // clickToClose?: boolean;
   // pauseOnHover?: boolean;
   // showOnlyTheLastOne?: boolean;
@@ -27,6 +34,7 @@ export type TNotificationsInitUpdate = React.Dispatch<React.SetStateAction<INoti
 
 export interface INotificationsUIStateItem {
   id: string;
+  isVisible: boolean;
 }
 
 export type TNotificationsUIState = INotificationsUIStateItem[];
@@ -40,9 +48,15 @@ export interface INotificationsContext {
   uiUpdate: TNotificationsUIUpdate;
 }
 
-export interface IUseNotificationsUIMethodsReturn {
-  add: () => void;
-  remove: (id: string) => void;
+export interface IUseNotificationsUpdateVisibility {
+  id: INotificationsUIStateItem['id'];
+  isVisible: boolean;
 }
 
-export type TUseNotificationsReturn = IUseNotificationsUIMethodsReturn;
+export interface IUseNotificationsReturn {
+  add: () => void;
+  remove: (id: string) => void;
+  notificationUpdateVisibility: (
+    props: IUseNotificationsUpdateVisibility,
+  ) => void;
+}

@@ -3,6 +3,7 @@ import {
   isMotificationsPlacementTop,
   notificationsWrapperInsetGenerator,
   notificationsItemsMarginGenerator,
+  notificationsWaitForTimeout,
 } from '.';
 
 describe('Helpers', () => {
@@ -137,6 +138,12 @@ describe('Helpers', () => {
           placement: 'bottom-right',
         }),
       ).toBe('12px 0px 0px 0px');
+    });
+  });
+
+  describe('notificationsWaitForTimeout', () => {
+    it('returns the delay after waiting for the delay', async () => {
+      await expect(notificationsWaitForTimeout(200)).resolves.toBe(200);
     });
   });
 });

@@ -2,27 +2,24 @@ import React from 'react';
 
 import {
   notificationsWrapperInsetGenerator,
-  notificationsItemsMarginGenerator,
 } from '../../helpers';
 import {
   useNotificationsGetInitState,
   useNotificationsGetUIState,
-  useNotificationsUIWrapperAutoScroll,
+  useNotificationsConsumerAutoScroll,
 } from '../../hooks';
 
-import { styleRoot, styleItem } from './index.styles';
+import NotificationsItem from '../NotificationsItem';
+
+import { styleRoot } from './index.styles';
 
 export const NotificationsConsumer: React.FC = () => {
   const refWrapper = React.useRef<HTMLDivElement>(null);
+
   const { initState } = useNotificationsGetInitState();
   const { uiState } = useNotificationsGetUIState();
 
-  useNotificationsUIWrapperAutoScroll(refWrapper);
-
-  // TODO
-  // React.useEffect(() => {
-  //   console.log(initState);
-  // }, [initState]);
+  useNotificationsConsumerAutoScroll(refWrapper);
 
   return (
     <div
@@ -38,22 +35,15 @@ export const NotificationsConsumer: React.FC = () => {
         }),
         width: initState.width,
         maxWidth: `calc(100% - ${initState.offset} - ${initState.offset})`,
+        maxHeight: `calc(100vh - ${initState.offset})`,
       }}
     >
       {
         uiState.map((item) => (
-          <div
-            data-id={item.id}
+          <NotificationsItem
             key={item.id}
-            style={{
-              ...styleItem,
-              margin: notificationsItemsMarginGenerator({
-                placement: initState.placement,
-              }),
-              // TODO
-              opacity: 1,
-            }}
-          >{item.id}</div>
+            props={item}
+          />
         ))
       }
     </div>

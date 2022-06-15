@@ -20,7 +20,7 @@ const jestConfig = {
     '<rootDir>/node_modules/',
     '<rootDir>/public/',
   ],
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   detectOpenHandles: true,
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',

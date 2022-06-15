@@ -69,3 +69,11 @@ export const notificationsItemsMarginGenerator = ({
 
   return '12px 0px 0px 0px';
 };
+
+export const notificationsWaitForTimeout = (delay: number): Promise<number> => new Promise((resolve) => {
+  const timeout = window.setTimeout(() => {
+    resolve(delay);
+    window.clearTimeout(timeout);
+  }, delay);
+  return timeout;
+});

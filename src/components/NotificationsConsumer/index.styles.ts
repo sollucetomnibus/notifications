@@ -6,32 +6,27 @@ import {
 import {
   notificationsWrapperInsetGenerator,
 } from '../../helpers';
+import {
+  styleCommon,
+} from '../../styles';
 
 export const styleRoot: React.CSSProperties = {
-  boxSizing: 'border-box',
+  ...styleCommon,
   position: 'fixed',
   zIndex: notificationsInitState.zIndex,
-  opacity: notificationsInitState.opacity,
   inset: notificationsWrapperInsetGenerator({
     offset: notificationsInitState.offset,
     placement: notificationsInitState.placement,
   }),
   width: notificationsInitState.width,
   maxWidth: '100%',
-  maxHeight: '100vh',
+  maxHeight: `calc(100vh - ${notificationsInitState.offset})`,
   overflow: 'hidden auto',
   padding: 0,
   margin: 'auto',
-};
-
-export const styleItem: React.CSSProperties = {
-  boxSizing: 'border-box',
-  width: '100%',
-  borderRadius: notificationsInitState.borderRadius,
-  margin: '12px 0 0 0',
-  // TODO
-  padding: 20,
-  background: '#fc0',
-  opacity: 0,
-  transition: 'opacity 1s ease',
+  opacity: notificationsInitState.opacity,
+  transitionProperty: 'opacity',
+  transitionDuration: `${notificationsInitState.animationDurationAsMilliseconds}ms`,
+  transitionTimingFunction: 'ease-in-out',
+  transitionDelay: '0ms',
 };
