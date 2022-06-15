@@ -1,7 +1,6 @@
-// For a detailed explanation regarding each configuration property, visit: https://jestjs.io/docs/configuration
+import type { Config } from '@jest/types';
 
-/** @type {import('@jest/types').Config.InitialOptions} */
-const jestConfig = {
+const jestConfig: Config.InitialOptions = {
   rootDir: '.',
   bail: true,
   clearMocks: true,

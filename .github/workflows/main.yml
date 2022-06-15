@@ -18,7 +18,7 @@ jobs:
 
       - name: Library => Lint and Test 🔍
         run: |
-          yarn lint:dev
+          yarn lint:src
           yarn test
 
       - name: Storybook => Build 🔧
