@@ -26,4 +26,4 @@ const jestConfig: Config.InitialOptions = {
   },
 };
 
-module.exports = jestConfig;
+export default jestConfig;

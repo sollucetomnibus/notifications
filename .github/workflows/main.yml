@@ -18,6 +18,7 @@ jobs:
 
       - name: Library => Lint and Test 🔍
         run: |
+          yarn lint:config
           yarn lint:src
           yarn test
 
