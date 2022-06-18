@@ -4,7 +4,7 @@ import {
   notificationsInitState,
 } from '../../context';
 import {
-  notificationsWrapperInsetGenerator,
+  helperNotificationsWrapperInsetGenerator,
 } from '../../helpers';
 import {
   styleCommon,
@@ -14,7 +14,7 @@ export const styleRoot: React.CSSProperties = {
   ...styleCommon,
   position: 'fixed',
   zIndex: notificationsInitState.zIndex,
-  inset: notificationsWrapperInsetGenerator({
+  inset: helperNotificationsWrapperInsetGenerator({
     offset: notificationsInitState.offset,
     placement: notificationsInitState.placement,
   }),

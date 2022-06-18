@@ -9,6 +9,7 @@ import {
 const App: React.FC = () => {
   const { add } = useNotifications({
     offset: '24px',
+    // hasAnimation: false,
     // hasAnimation: true,
     // placement: 'top-center',
   });

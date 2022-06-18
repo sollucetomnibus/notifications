@@ -15,7 +15,8 @@ export const styleRoot: React.CSSProperties = {
   margin: '12px 0 0 0',
   // TODO: animations
   opacity: 0,
-  transitionProperty: 'opacity',
+  visibility: 'hidden',
+  transitionProperty: 'opacity, visibility',
   transitionDuration: `${notificationsInitState.animationDurationAsMilliseconds}ms`,
   transitionTimingFunction: 'ease-in-out',
   transitionDelay: '0ms',

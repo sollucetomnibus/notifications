@@ -1,59 +1,30 @@
 import React from 'react';
 
 import {
-  notificationsItemsMarginGenerator,
+  helperNotificationsItemsMarginGenerator,
 } from '../../helpers';
 import {
-  useNotifications,
+  useNotificationsItemsVisibility,
   useNotificationsGetInitState,
 } from '../../hooks';
 import {
-  INotificationsUIStateItem,
+  INotificationsItemProps,
 } from '../../types';
 
 import { styleRoot } from './index.styles';
 
-export interface NotificationsItemProps {
-  props: INotificationsUIStateItem;
-}
-
-const NotificationsItem: React.FC<NotificationsItemProps> = ({
+const NotificationsItem: React.FC<INotificationsItemProps> = ({
   props,
 }) => {
   const {
     id,
-    isVisible,
   } = props;
-  const refItemCanBeVisible = React.useRef<boolean>(true);
-  const [stateIsItemVisible, setStateIsItemVisible] = React.useState<boolean>(isVisible);
 
-  const { notificationUpdateVisibility } = useNotifications();
   const { initState } = useNotificationsGetInitState();
 
-  const itemVisibilityHandler = React.useCallback((): void => {
-    if (!stateIsItemVisible) {
-      notificationUpdateVisibility({
-        id,
-        isVisible: true,
-      });
-      setStateIsItemVisible(true);
-    }
-  }, [
+  const { isVisible } = useNotificationsItemsVisibility({
     id,
-    stateIsItemVisible,
-    notificationUpdateVisibility,
-  ]);
-
-  React.useEffect(() => {
-    if (refItemCanBeVisible.current) {
-      itemVisibilityHandler();
-      refItemCanBeVisible.current = false;
-    }
-
-    return () => {
-      refItemCanBeVisible.current = false;
-    };
-  }, [itemVisibilityHandler]);
+  });
 
   return (
     <div
@@ -61,10 +32,11 @@ const NotificationsItem: React.FC<NotificationsItemProps> = ({
       data-id={id}
       style={{
         ...styleRoot,
-        margin: notificationsItemsMarginGenerator({
+        margin: helperNotificationsItemsMarginGenerator({
           placement: initState.placement,
         }),
-        opacity: !initState.hasAnimation || stateIsItemVisible ? 1 : 0,
+        opacity: (!initState.hasAnimation || isVisible) ? 1 : 0,
+        visibility: (!initState.hasAnimation || isVisible) ? 'visible' : 'hidden',
       }}
     >{id}</div>
   );

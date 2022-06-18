@@ -1,12 +1,13 @@
+import React from 'react';
+
 import {
-  isMotificationsPlacementTop,
-  uuidV4,
+  helperIsMotificationsPlacementTop,
+  helperGenerateUUIDV4,
 } from '../../helpers';
 import {
   INotificationsInitState,
   INotificationsUIStateItem,
-  IUseNotificationsReturn,
-  IUseNotificationsUpdateVisibility,
+  ITodo,
 } from '../../types';
 import {
   useNotificationsGetInitState,
@@ -15,55 +16,40 @@ import {
   useNotificationsGetUIUpdate,
 } from '../states';
 
-// TODO: Separate to Public and Private
+// TODO: Make these "useNotificationsActionsPublic" and separate to this hook
 export const useNotifications = (
   initOptions: INotificationsInitState = {},
-): IUseNotificationsReturn => {
+): ITodo => {
   const { initState } = useNotificationsGetInitState();
   const { uiState } = useNotificationsGetUIState();
   const { uiUpdate } = useNotificationsGetUIUpdate();
 
   useNotificationsSetInitState(initOptions);
 
-  const add = (): void => {
-    const id = uuidV4();
+  const add = React.useCallback((): void => {
+    const id = helperGenerateUUIDV4();
     const item: INotificationsUIStateItem = {
       id,
       isVisible: false,
+      isAutoRemovable: true,
     };
 
-    if (isMotificationsPlacementTop({
+    if (helperIsMotificationsPlacementTop({
       placement: initState.placement,
     })) {
-      uiUpdate([item, ...uiState]);
+      const newState = [item, ...uiState];
+      uiUpdate(newState);
     } else {
-      uiUpdate([...uiState, item]);
+      const newState = [...uiState, item];
+      uiUpdate(newState);
     }
-  };
-
-  const remove = (id: string): void => {
-    uiUpdate([...uiState.filter((item) => item.id !== id)]);
-  };
-
-  const notificationUpdateVisibility = ({
-    id,
-    isVisible,
-  }: IUseNotificationsUpdateVisibility): void => {
-    uiUpdate([...uiState.filter((item) => {
-      if (item.id === id) {
-        const newItem: INotificationsUIStateItem = {
-          ...item,
-          isVisible,
-        };
-        return newItem;
-      }
-      return item;
-    })]);
-  };
+  }, [
+    uiState,
+    uiUpdate,
+    initState.placement,
+  ]);
 
   return {
     add,
-    remove,
-    notificationUpdateVisibility,
   };
 };

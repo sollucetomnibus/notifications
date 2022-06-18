@@ -3,7 +3,7 @@ import {
   TNotificationsInitStateUnit,
 } from '../types';
 
-const uuidV4Generator = (count: number): string => {
+const helperGenerateUUIDV4Generator = (count: number): string => {
   let result = '';
   for (let i = 0; i < count; ++i) {
     result += (16 * Math.random() | 0).toString(16);
@@ -11,12 +11,12 @@ const uuidV4Generator = (count: number): string => {
   return result;
 };
 
-export const uuidV4 = (): string => {
-  const uuidV4 = `${uuidV4Generator(8)}-${uuidV4Generator(4)}-4${uuidV4Generator(3)}-${(((16 * Math.random() | 0) & 0x3) | 0x8).toString(16)}${uuidV4Generator(3)}-${uuidV4Generator(12)}`;
-  return uuidV4;
+export const helperGenerateUUIDV4 = (): string => {
+  const helperGenerateUUIDV4 = `${helperGenerateUUIDV4Generator(8)}-${helperGenerateUUIDV4Generator(4)}-4${helperGenerateUUIDV4Generator(3)}-${(((16 * Math.random() | 0) & 0x3) | 0x8).toString(16)}${helperGenerateUUIDV4Generator(3)}-${helperGenerateUUIDV4Generator(12)}`;
+  return helperGenerateUUIDV4;
 };
 
-export const isMotificationsPlacementTop = ({
+export const helperIsMotificationsPlacementTop = ({
   placement,
 }: {
   placement: TNotificationsInitStatePlacement;
@@ -29,7 +29,7 @@ export const isMotificationsPlacementTop = ({
   return topPlacements.includes(placement);
 };
 
-export const notificationsWrapperInsetGenerator = ({
+export const helperNotificationsWrapperInsetGenerator = ({
   offset,
   placement,
 }: {
@@ -58,19 +58,19 @@ export const notificationsWrapperInsetGenerator = ({
   }
 };
 
-export const notificationsItemsMarginGenerator = ({
+export const helperNotificationsItemsMarginGenerator = ({
   placement,
 }: {
   placement: TNotificationsInitStatePlacement;
 }): string => {
-  if (isMotificationsPlacementTop({ placement })) {
+  if (helperIsMotificationsPlacementTop({ placement })) {
     return '0px 0px 12px 0px';
   }
 
   return '12px 0px 0px 0px';
 };
 
-export const notificationsWaitForTimeout = (delay: number): Promise<number> => new Promise((resolve) => {
+export const helperNotificationsWaitForTimeout = (delay: number): Promise<number> => new Promise((resolve) => {
   const timeout = window.setTimeout(() => {
     resolve(delay);
     window.clearTimeout(timeout);

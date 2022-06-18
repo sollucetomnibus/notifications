@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  notificationsWrapperInsetGenerator,
+  helperNotificationsWrapperInsetGenerator,
 } from '../../helpers';
 import {
   useNotificationsGetInitState,
@@ -29,7 +29,7 @@ export const NotificationsConsumer: React.FC = () => {
         ...styleRoot,
         zIndex: initState.zIndex,
         opacity: initState.opacity,
-        inset: notificationsWrapperInsetGenerator({
+        inset: helperNotificationsWrapperInsetGenerator({
           offset: initState.offset,
           placement: initState.placement,
         }),

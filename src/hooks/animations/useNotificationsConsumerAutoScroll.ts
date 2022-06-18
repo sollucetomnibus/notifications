@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  isMotificationsPlacementTop,
+  helperIsMotificationsPlacementTop,
 } from '../../helpers';
 import {
   useNotificationsGetInitState,
@@ -21,7 +21,7 @@ export const useNotificationsConsumerAutoScroll = (
 
   const scrollIntoViewHandler = React.useCallback(async (): Promise<void> => {
     if (uiState.length > 1) {
-      if (isMotificationsPlacementTop({
+      if (helperIsMotificationsPlacementTop({
         placement: initState.placement,
       })) {
         ref.current?.firstElementChild?.scrollIntoView(scrollOptions);

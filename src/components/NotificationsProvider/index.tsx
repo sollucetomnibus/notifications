@@ -7,15 +7,16 @@ import {
 } from '../../context';
 import {
   INotificationsInitState,
+  INotificationsProviderProps,
   TNotificationsUIState,
 } from '../../types';
 import {
   NotificationsConsumer,
 } from '../NotificationsConsumer';
 
-export const NotificationsProvider: React.FC<{
-  children: React.ReactNode;
-}> = ({ children }) => {
+export const NotificationsProvider: React.FC<INotificationsProviderProps> = ({
+  children,
+}) => {
   const [
     initState,
     initUpdate,
