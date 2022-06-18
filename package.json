@@ -66,8 +66,8 @@
   },
   "scripts": {
     "lint:config": "eslint .storybook jest.config.ts",
-    "lint:src": "eslint 'src/**/*.{ts,tsx}'",
-    "lint:dist": "eslint 'dist/**/*.{js,jsx,ts,tsx}' --fix",
+    "lint:src": "eslint src",
+    "lint:dist": "eslint dist --fix",
     "storybook:dev": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o .storybook-build",
     "test": "jest",
