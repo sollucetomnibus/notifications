@@ -43,14 +43,14 @@
     "@storybook/manager-webpack4": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
-    "@types/jest": "^28.1.0",
-    "@types/node": "^17.0.44",
-    "@types/react": "^18.0.0",
+    "@types/jest": "^28.1.2",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "babel-loader": "^8.2.5",
-    "eslint": "^8.17.0",
+    "eslint": "^8.18.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "jest": "^28.1.1",
@@ -58,7 +58,7 @@
     "react-test-renderer": "^18.2.0",
     "ts-jest": "^28.0.5",
     "ts-node": "^10.8.1",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "react": "^18.2.0",
