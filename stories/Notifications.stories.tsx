@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
   NotificationsProvider,
   useNotifications,
-} from '../dist';
+} from '../src';
 
 const App: React.FC = () => {
   const { add } = useNotifications({
