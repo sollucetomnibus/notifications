@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import {
   helperNotificationsWrapperInsetGenerator,
@@ -17,7 +17,7 @@ import NotificationsItem from '../NotificationsItem';
 import { styleRoot } from './index.styles';
 
 export const NotificationsConsumer: React.FC = () => {
-  const refWrapper = React.useRef<HTMLDivElement>(null);
+  const refWrapper = useRef<HTMLDivElement>(null);
 
   const items = useNotificationsSelector(selectNotificationsUIItems);
   const {

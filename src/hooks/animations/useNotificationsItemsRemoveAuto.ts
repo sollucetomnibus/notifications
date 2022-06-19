@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import {
   helperNotificationsWaitForTimeout,
@@ -33,7 +33,7 @@ export const useNotificationsItemsRemoveAuto = ({
 
   const { itemIsVisible } = useNotificationsItemsVisibility({ id });
 
-  const itemAutoRemoveHandler = React.useCallback(async (): Promise<void> => {
+  const itemAutoRemoveHandler = useCallback(async (): Promise<void> => {
     if (itemIsAutoRemovable && itemIsVisible) {
       await helperNotificationsWaitForTimeout(autoRemoveDelay);
 
@@ -57,7 +57,7 @@ export const useNotificationsItemsRemoveAuto = ({
     animationDurationAsMilliseconds,
   ]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     itemAutoRemoveHandler();
   }, [itemAutoRemoveHandler]);
 };

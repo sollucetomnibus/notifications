@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 import {
   helperNotificationsWaitForTimeout,
@@ -17,12 +17,12 @@ import {
 export const useNotificationsItemsVisibility = ({
   id,
 }: IUseNotificationsItemsVisibilityProps): IUseNotificationsItemsVisibilityReturn => {
-  const refIsVisible = React.useRef<boolean>(false);
+  const refIsVisible = useRef<boolean>(false);
   const dispatch = useNotificationsDispatch();
   const itemIsVisible = useNotificationsSelector(selectNotificationsUIItems)
     .find((item) => item.id === id)?.isVisible === true;
 
-  const itemVisibilityHandler = React.useCallback(async (): Promise<void> => {
+  const itemVisibilityHandler = useCallback(async (): Promise<void> => {
     if (!refIsVisible.current) {
       refIsVisible.current = true;
 
@@ -38,7 +38,7 @@ export const useNotificationsItemsVisibility = ({
     dispatch,
   ]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     itemVisibilityHandler();
   }, [itemVisibilityHandler]);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 
 import {
   helperIsMotificationsPlacementTop,
@@ -18,12 +18,12 @@ export const useNotificationsConsumerAutoScroll = (
     hasAnimation,
   } = useNotificationsSelector(selectNotificationsInitOptions);
 
-  const scrollOptions: ScrollIntoViewOptions = React.useMemo(() => ({
+  const scrollOptions: ScrollIntoViewOptions = useMemo(() => ({
     behavior: hasAnimation ? 'smooth' : 'auto',
     block: 'center',
   }), [hasAnimation]);
 
-  const scrollIntoViewHandler = React.useCallback(async (): Promise<void> => {
+  const scrollIntoViewHandler = useCallback(async (): Promise<void> => {
     if (items.length > 1) {
       if (helperIsMotificationsPlacementTop({
         placement,
@@ -40,7 +40,7 @@ export const useNotificationsConsumerAutoScroll = (
     placement,
   ]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     scrollIntoViewHandler();
   }, [scrollIntoViewHandler]);
 };

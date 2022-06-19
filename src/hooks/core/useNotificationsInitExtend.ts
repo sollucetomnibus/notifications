@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import {
   useNotificationsDispatch,
@@ -12,9 +12,9 @@ export const useNotificationsInitExtend = (
   initOptions: INotificationsStateInitOptions = {},
 ): void => {
   const dispatch = useNotificationsDispatch();
-  const refInitCanBeExtended = React.useRef<boolean>(true);
+  const refInitCanBeExtended = useRef<boolean>(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (refInitCanBeExtended.current && Object.keys(initOptions).length > 0) {
       refInitCanBeExtended.current = false;
       dispatch(actionExtendOptions(initOptions));
