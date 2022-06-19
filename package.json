@@ -1,6 +1,6 @@
 {
   "name": "@sollucetomnibus/notifications",
-  "version": "0.0.1-beta.02",
+  "version": "0.0.1-beta.05",
   "description": "React Toast Notifications",
   "homepage": "https://sollucetomnibus.github.io/notifications/",
   "main": "index.js",
@@ -55,6 +55,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-test-renderer": "^18.2.0",
     "ts-jest": "^28.0.5",
     "ts-node": "^10.8.1",
@@ -62,9 +64,11 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-redux": "^8.0.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "scripts": {
     "test": "jest",

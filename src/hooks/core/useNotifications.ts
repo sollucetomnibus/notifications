@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import {
   helperGenerateUUIDV4,
 } from '../../helpers';
