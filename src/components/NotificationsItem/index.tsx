@@ -4,9 +4,13 @@ import {
   helperNotificationsItemsMarginGenerator,
 } from '../../helpers';
 import {
+  useNotificationsItemsRemoveAuto,
   useNotificationsItemsVisibility,
-  useNotificationsGetInitState,
 } from '../../hooks';
+import {
+  selectNotificationsInitOptions,
+  useNotificationsSelector,
+} from '../../redux';
 import {
   INotificationsItemProps,
 } from '../../types';
@@ -20,23 +24,27 @@ const NotificationsItem: React.FC<INotificationsItemProps> = ({
     id,
   } = props;
 
-  const { initState } = useNotificationsGetInitState();
+  const {
+    classNameItems,
+    placement,
+    hasAnimation,
+  } = useNotificationsSelector(selectNotificationsInitOptions);
 
-  const { isVisible } = useNotificationsItemsVisibility({
-    id,
-  });
+  const { itemIsVisible } = useNotificationsItemsVisibility({ id });
+
+  useNotificationsItemsRemoveAuto({ id });
 
   return (
     <div
-      className={initState.classNameItems}
+      className={classNameItems}
       data-id={id}
       style={{
         ...styleRoot,
         margin: helperNotificationsItemsMarginGenerator({
-          placement: initState.placement,
+          placement,
         }),
-        opacity: (!initState.hasAnimation || isVisible) ? 1 : 0,
-        visibility: (!initState.hasAnimation || isVisible) ? 'visible' : 'hidden',
+        opacity: (!hasAnimation || itemIsVisible) ? 1 : 0,
+        visibility: (!hasAnimation || itemIsVisible) ? 'visible' : 'hidden',
       }}
     >{id}</div>
   );

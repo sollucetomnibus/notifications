@@ -1,24 +1,15 @@
 import {
-  IActionNotificationsItemRemoveProps,
-  IActionNotificationsItemUpdateVisibilityProps,
-} from './actions';
-import {
-  INotificationsUIStateItem,
-} from './context';
+  INotificationsStateUIItem,
+} from './redux';
 
 export interface IUseNotificationsItemsVisibilityProps {
-  id: INotificationsUIStateItem['id'];
+  id: INotificationsStateUIItem['id'];
 }
 
 export interface IUseNotificationsItemsVisibilityReturn {
-  isVisible: boolean;
+  itemIsVisible: boolean;
 }
 
-export interface IUseNotificationsActionsPrivateReturn {
-  actionNotificationsItemRemove: (
-    props: IActionNotificationsItemRemoveProps,
-  ) => void;
-  actionNotificationsItemUpdateVisibility: (
-    props: IActionNotificationsItemUpdateVisibilityProps,
-  ) => void;
+export interface IUseNotificationsItemsRemoveAutoProps {
+  id: INotificationsStateUIItem['id'];
 }

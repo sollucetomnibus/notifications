@@ -4,25 +4,29 @@ import {
   helperIsMotificationsPlacementTop,
 } from '../../helpers';
 import {
-  useNotificationsGetInitState,
-  useNotificationsGetUIState,
-} from '../states';
+  selectNotificationsInitOptions,
+  selectNotificationsUIItems,
+  useNotificationsSelector,
+} from '../../redux';
 
 export const useNotificationsConsumerAutoScroll = (
   ref: React.RefObject<HTMLDivElement>,
 ): void => {
-  const { initState } = useNotificationsGetInitState();
-  const { uiState } = useNotificationsGetUIState();
+  const items = useNotificationsSelector(selectNotificationsUIItems);
+  const {
+    placement,
+    hasAnimation,
+  } = useNotificationsSelector(selectNotificationsInitOptions);
 
   const scrollOptions: ScrollIntoViewOptions = React.useMemo(() => ({
-    behavior: initState.hasAnimation ? 'smooth' : 'auto',
+    behavior: hasAnimation ? 'smooth' : 'auto',
     block: 'center',
-  }), [initState.hasAnimation]);
+  }), [hasAnimation]);
 
   const scrollIntoViewHandler = React.useCallback(async (): Promise<void> => {
-    if (uiState.length > 1) {
+    if (items.length > 1) {
       if (helperIsMotificationsPlacementTop({
-        placement: initState.placement,
+        placement,
       })) {
         ref.current?.firstElementChild?.scrollIntoView(scrollOptions);
       } else {
@@ -32,8 +36,8 @@ export const useNotificationsConsumerAutoScroll = (
   }, [
     ref,
     scrollOptions,
-    uiState.length,
-    initState.placement,
+    items.length,
+    placement,
   ]);
 
   React.useEffect(() => {

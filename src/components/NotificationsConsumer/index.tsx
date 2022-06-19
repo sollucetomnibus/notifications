@@ -4,8 +4,11 @@ import {
   helperNotificationsWrapperInsetGenerator,
 } from '../../helpers';
 import {
-  useNotificationsGetInitState,
-  useNotificationsGetUIState,
+  selectNotificationsUIItems,
+  selectNotificationsInitOptions,
+  useNotificationsSelector,
+} from '../../redux';
+import {
   useNotificationsConsumerAutoScroll,
 } from '../../hooks';
 
@@ -16,30 +19,37 @@ import { styleRoot } from './index.styles';
 export const NotificationsConsumer: React.FC = () => {
   const refWrapper = React.useRef<HTMLDivElement>(null);
 
-  const { initState } = useNotificationsGetInitState();
-  const { uiState } = useNotificationsGetUIState();
+  const items = useNotificationsSelector(selectNotificationsUIItems);
+  const {
+    classNameWrapper,
+    zIndex,
+    opacity,
+    offset,
+    placement,
+    width,
+  } = useNotificationsSelector(selectNotificationsInitOptions);
 
   useNotificationsConsumerAutoScroll(refWrapper);
 
   return (
     <div
       ref={refWrapper}
-      className={initState.classNameWrapper}
+      className={classNameWrapper}
       style={{
         ...styleRoot,
-        zIndex: initState.zIndex,
-        opacity: initState.opacity,
+        zIndex,
+        opacity,
         inset: helperNotificationsWrapperInsetGenerator({
-          offset: initState.offset,
-          placement: initState.placement,
+          offset,
+          placement,
         }),
-        width: initState.width,
-        maxWidth: `calc(100% - ${initState.offset} - ${initState.offset})`,
-        maxHeight: `calc(100vh - ${initState.offset})`,
+        width,
+        maxWidth: `calc(100% - ${offset} - ${offset})`,
+        maxHeight: `calc(100vh - ${offset})`,
       }}
     >
       {
-        uiState.map((item) => (
+        items.map((item) => (
           <NotificationsItem
             key={item.id}
             props={item}

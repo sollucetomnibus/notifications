@@ -1,3 +1,0 @@
-export {
-  useNotificationsActionsPrivate,
-} from './useNotificationsActionsPrivate';

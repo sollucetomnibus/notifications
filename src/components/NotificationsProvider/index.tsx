@@ -1,14 +1,11 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
 import {
-  NotificationsContext,
-  notificationsInitState,
-  notificationsUIState,
-} from '../../context';
+  store,
+} from '../../redux';
 import {
-  INotificationsInitState,
   INotificationsProviderProps,
-  TNotificationsUIState,
 } from '../../types';
 import {
   NotificationsConsumer,
@@ -16,25 +13,9 @@ import {
 
 export const NotificationsProvider: React.FC<INotificationsProviderProps> = ({
   children,
-}) => {
-  const [
-    initState,
-    initUpdate,
-  ] = React.useState<INotificationsInitState>(notificationsInitState);
-  const [
-    uiState,
-    uiUpdate,
-  ] = React.useState<TNotificationsUIState>(notificationsUIState);
-
-  return (
-    <NotificationsContext.Provider value={{
-      initState,
-      initUpdate,
-      uiState,
-      uiUpdate,
-    }}>
-      {children}
-      <NotificationsConsumer />
-    </NotificationsContext.Provider>
-  );
-};
+}) => (
+  <Provider store={store}>
+    {children}
+    <NotificationsConsumer />
+  </Provider>
+);

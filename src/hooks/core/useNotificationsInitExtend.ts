@@ -1,30 +1,29 @@
 import React from 'react';
 
 import {
-  NotificationsContext,
-} from '../../context';
+  useNotificationsDispatch,
+  actionExtendOptions,
+} from '../../redux';
 import {
-  INotificationsInitState,
+  INotificationsStateInitOptions,
 } from '../../types';
 
-export const useNotificationsSetInitState = (
-  initOptions: INotificationsInitState = {},
+export const useNotificationsInitExtend = (
+  initOptions: INotificationsStateInitOptions = {},
 ): void => {
+  const dispatch = useNotificationsDispatch();
   const refInitCanBeExtended = React.useRef<boolean>(true);
-  const { initState, initUpdate } = React.useContext(NotificationsContext);
 
   React.useEffect(() => {
     if (refInitCanBeExtended.current && Object.keys(initOptions).length > 0) {
-      initUpdate({ ...initState, ...initOptions });
       refInitCanBeExtended.current = false;
+      dispatch(actionExtendOptions(initOptions));
     }
-
     return () => {
       refInitCanBeExtended.current = false;
     };
   }, [
-    initUpdate,
-    initState,
+    dispatch,
     initOptions,
   ]);
 };

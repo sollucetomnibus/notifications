@@ -1,6 +1,6 @@
 import {
-  TNotificationsInitStatePlacement,
-  TNotificationsInitStateUnit,
+  TNotificationsStateInitPlacement,
+  TNotificationsStateInitUnit,
 } from '../types';
 
 const helperGenerateUUIDV4Generator = (count: number): string => {
@@ -19,9 +19,9 @@ export const helperGenerateUUIDV4 = (): string => {
 export const helperIsMotificationsPlacementTop = ({
   placement,
 }: {
-  placement: TNotificationsInitStatePlacement;
+  placement: TNotificationsStateInitPlacement;
 }): boolean => {
-  const topPlacements: TNotificationsInitStatePlacement[] = [
+  const topPlacements: TNotificationsStateInitPlacement[] = [
     'top-left',
     'top-center',
     'top-right',
@@ -33,8 +33,8 @@ export const helperNotificationsWrapperInsetGenerator = ({
   offset,
   placement,
 }: {
-  offset: TNotificationsInitStateUnit;
-  placement: TNotificationsInitStatePlacement;
+  offset: TNotificationsStateInitUnit;
+  placement: TNotificationsStateInitPlacement;
 }): string => {
   switch (placement) {
     case 'top-left':
@@ -61,7 +61,7 @@ export const helperNotificationsWrapperInsetGenerator = ({
 export const helperNotificationsItemsMarginGenerator = ({
   placement,
 }: {
-  placement: TNotificationsInitStatePlacement;
+  placement: TNotificationsStateInitPlacement;
 }): string => {
   if (helperIsMotificationsPlacementTop({ placement })) {
     return '0px 0px 12px 0px';

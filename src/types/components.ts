@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {
-  INotificationsUIStateItem,
-} from './context';
+  INotificationsStateUIItem,
+} from './redux';
 
 export interface INotificationsProviderProps {
   children: React.ReactNode;
 }
 
 export interface INotificationsItemProps {
-  props: INotificationsUIStateItem;
+  props: INotificationsStateUIItem;
 }

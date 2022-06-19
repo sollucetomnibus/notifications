@@ -4,3 +4,6 @@ export {
 export {
   useNotificationsItemsVisibility,
 } from './useNotificationsItemsVisibility';
+export {
+  useNotificationsItemsRemoveAuto,
+} from './useNotificationsItemsRemoveAuto';

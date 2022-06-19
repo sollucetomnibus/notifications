@@ -4,14 +4,13 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
   NotificationsProvider,
   useNotifications,
-} from '../src';
+} from '../dist';
 
 const App: React.FC = () => {
   const { add } = useNotifications({
-    offset: '24px',
+    // offset: '24px',
     // hasAnimation: false,
-    // hasAnimation: true,
-    // placement: 'top-center',
+    // placement: 'top-right',
   });
 
   return (

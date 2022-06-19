@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {
-  notificationsInitState,
-} from '../../context';
+  initialStateNotificationsInitOptions,
+} from '../../redux';
 import {
   helperNotificationsWrapperInsetGenerator,
 } from '../../helpers';
@@ -13,20 +13,20 @@ import {
 export const styleRoot: React.CSSProperties = {
   ...styleCommon,
   position: 'fixed',
-  zIndex: notificationsInitState.zIndex,
+  zIndex: initialStateNotificationsInitOptions.zIndex,
   inset: helperNotificationsWrapperInsetGenerator({
-    offset: notificationsInitState.offset,
-    placement: notificationsInitState.placement,
+    offset: initialStateNotificationsInitOptions.offset,
+    placement: initialStateNotificationsInitOptions.placement,
   }),
-  width: notificationsInitState.width,
+  width: initialStateNotificationsInitOptions.width,
   maxWidth: '100%',
-  maxHeight: `calc(100vh - ${notificationsInitState.offset})`,
+  maxHeight: `calc(100vh - ${initialStateNotificationsInitOptions.offset})`,
   overflow: 'hidden auto',
   padding: 0,
   margin: 'auto',
-  opacity: notificationsInitState.opacity,
+  opacity: initialStateNotificationsInitOptions.opacity,
   transitionProperty: 'opacity',
-  transitionDuration: `${notificationsInitState.animationDurationAsMilliseconds}ms`,
+  transitionDuration: `${initialStateNotificationsInitOptions.animationDurationAsMilliseconds}ms`,
   transitionTimingFunction: 'ease-in-out',
   transitionDelay: '0ms',
 };

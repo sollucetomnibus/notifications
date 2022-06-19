@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {
-  notificationsInitState,
-} from '../../context';
+  initialStateNotificationsInitOptions,
+} from '../../redux';
 import {
   styleCommon,
 } from '../../styles';
@@ -11,13 +11,13 @@ export const styleRoot: React.CSSProperties = {
   ...styleCommon,
   position: 'relative',
   width: '100%',
-  borderRadius: notificationsInitState.borderRadius,
+  borderRadius: initialStateNotificationsInitOptions.borderRadius,
   margin: '12px 0 0 0',
   // TODO: animations
   opacity: 0,
   visibility: 'hidden',
   transitionProperty: 'opacity, visibility',
-  transitionDuration: `${notificationsInitState.animationDurationAsMilliseconds}ms`,
+  transitionDuration: `${initialStateNotificationsInitOptions.animationDurationAsMilliseconds}ms`,
   transitionTimingFunction: 'ease-in-out',
   transitionDelay: '0ms',
   // TODO: design
