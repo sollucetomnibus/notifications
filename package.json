@@ -1,6 +1,6 @@
 {
   "name": "@sollucetomnibus/notifications",
-  "version": "0.0.1-beta.01",
+  "version": "0.0.1-beta.02",
   "description": "React Toast Notifications",
   "homepage": "https://sollucetomnibus.github.io/notifications/",
   "main": "index.js",
@@ -67,13 +67,16 @@
     "react-redux": "^8.0.2"
   },
   "scripts": {
+    "test": "jest",
+    "lint:dev": "eslint dev",
     "lint:config": "eslint .storybook jest.config.ts",
     "lint:src": "eslint src",
     "lint:dist": "eslint dist --fix",
     "storybook:dev": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o .storybook-build",
-    "test": "jest",
     "start": "yarn lint:config && yarn lint:src && yarn storybook:dev",
-    "dist": "tsc --project tsconfig.dist.json && yarn lint:dist"
+    "dist:dev": "ts-node dev/index.ts",
+    "dist:build": "tsc --project tsconfig.dist.json && yarn lint:dist",
+    "dist": " yarn lint:dev && yarn dist:dev && yarn dist:build"
   }
 }
