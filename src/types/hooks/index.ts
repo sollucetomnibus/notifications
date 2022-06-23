@@ -1,13 +1,13 @@
 import {
   INotificationsStateUIItem,
-} from './redux';
+} from '../redux';
 
 export interface IUseNotificationsItemsVisibilityProps {
   id: INotificationsStateUIItem['id'];
 }
 
 export interface IUseNotificationsItemsVisibilityReturn {
-  itemIsVisible: boolean;
+  isItemVisible: boolean;
 }
 
 export interface IUseNotificationsItemsRemoveAutoProps {

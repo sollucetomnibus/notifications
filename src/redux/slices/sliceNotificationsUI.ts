@@ -1,13 +1,11 @@
-import {
-  createSlice,
-  PayloadAction,
-} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import {
   INotificationsStateUI,
-  INotificationsStateUIItem,
-  IActionNotificationsItemUpdateVisibility,
-  IActionNotificationsItemRemove,
+  TActionNotificationsItemsInsertAfter,
+  TActionNotificationsItemsInsertBefore,
+  TActionNotificationsItemsUpdateVisibility,
+  TActionNotificationsItemsRemove,
 } from '../../types';
 
 export const initialStateNotificationsUI: INotificationsStateUI = {
@@ -18,13 +16,13 @@ export const sliceNotificationsUI = createSlice({
   name: 'reducerNotificationsUI',
   initialState: initialStateNotificationsUI,
   reducers: {
-    actionAddAfter: (state, action: PayloadAction<INotificationsStateUIItem>) => {
+    actionNotificationsItemsInsertAfter: (state, action: TActionNotificationsItemsInsertAfter) => {
       state.items = [...state.items, action.payload];
     },
-    actionAddBefore: (state, action: PayloadAction<INotificationsStateUIItem>) => {
+    actionNotificationsItemsInsertBefore: (state, action: TActionNotificationsItemsInsertBefore) => {
       state.items = [action.payload, ...state.items];
     },
-    actionUpdateVisibility: (state, action: PayloadAction<IActionNotificationsItemUpdateVisibility>) => {
+    actionNotificationsItemsUpdateVisibility: (state, action: TActionNotificationsItemsUpdateVisibility) => {
       state.items = state.items.map((item) => {
         if (action.payload.id === item.id) {
           return {
@@ -35,17 +33,17 @@ export const sliceNotificationsUI = createSlice({
         return item;
       });
     },
-    actionRemove: (state, action: PayloadAction<IActionNotificationsItemRemove>) => {
+    actionNotificationsItemsRemove: (state, action: TActionNotificationsItemsRemove) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
   },
 });
 
 export const {
-  actionAddAfter,
-  actionAddBefore,
-  actionUpdateVisibility,
-  actionRemove,
+  actionNotificationsItemsInsertAfter,
+  actionNotificationsItemsInsertBefore,
+  actionNotificationsItemsUpdateVisibility,
+  actionNotificationsItemsRemove,
 } = sliceNotificationsUI.actions;
 
 export default sliceNotificationsUI.reducer;

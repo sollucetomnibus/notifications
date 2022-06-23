@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react';
 
 import {
   useNotificationsDispatch,
-  actionExtendOptions,
+  actionNotificationsInitOptionsExtend,
 } from '../../redux';
 import {
   INotificationsStateInitOptions,
 } from '../../types';
 
-export const useNotificationsInitExtend = (
+export const useNotificationsInitOptionsExtend = (
   initOptions: INotificationsStateInitOptions = {},
 ): void => {
   const dispatch = useNotificationsDispatch();
@@ -17,7 +17,7 @@ export const useNotificationsInitExtend = (
   useEffect(() => {
     if (refInitCanBeExtended.current && Object.keys(initOptions).length > 0) {
       refInitCanBeExtended.current = false;
-      dispatch(actionExtendOptions(initOptions));
+      dispatch(actionNotificationsInitOptionsExtend(initOptions));
     }
     return () => {
       refInitCanBeExtended.current = false;

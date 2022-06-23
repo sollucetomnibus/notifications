@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   INotificationsStateUIItem,
-} from './redux';
+} from '../redux';
 
 export interface INotificationsProviderProps {
   children: React.ReactNode;

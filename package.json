@@ -73,7 +73,7 @@
     "react-dom": ">= 17.0.0"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest src",
     "lint:dev": "eslint dev",
     "lint:config": "eslint .storybook jest.config.ts",
     "lint:src": "eslint src",

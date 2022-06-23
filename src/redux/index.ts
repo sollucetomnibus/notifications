@@ -7,11 +7,11 @@ export {
   selectNotificationsInitOptions,
 } from './selectors';
 export {
-  actionAddAfter,
-  actionAddBefore,
-  actionUpdateVisibility,
-  actionRemove,
-  actionExtendOptions,
+  actionNotificationsItemsInsertAfter,
+  actionNotificationsItemsInsertBefore,
+  actionNotificationsItemsUpdateVisibility,
+  actionNotificationsItemsRemove,
+  actionNotificationsInitOptionsExtend,
   initialStateNotificationsInitOptions,
 } from './slices';
 export {

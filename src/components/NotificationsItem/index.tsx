@@ -30,7 +30,7 @@ const NotificationsItem: React.FC<INotificationsItemProps> = ({
     hasAnimation,
   } = useNotificationsSelector(selectNotificationsInitOptions);
 
-  const { itemIsVisible } = useNotificationsItemsVisibility({ id });
+  const { isItemVisible } = useNotificationsItemsVisibility({ id });
 
   useNotificationsItemsRemoveAuto({ id });
 
@@ -43,8 +43,8 @@ const NotificationsItem: React.FC<INotificationsItemProps> = ({
         margin: helperNotificationsItemsMarginGenerator({
           placement,
         }),
-        opacity: (!hasAnimation || itemIsVisible) ? 1 : 0,
-        visibility: (!hasAnimation || itemIsVisible) ? 'visible' : 'hidden',
+        opacity: (!hasAnimation || isItemVisible) ? 1 : 0,
+        visibility: (!hasAnimation || isItemVisible) ? 'visible' : 'hidden',
       }}
     >{id}</div>
   );

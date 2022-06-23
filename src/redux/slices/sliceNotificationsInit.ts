@@ -1,11 +1,9 @@
-import {
-  createSlice,
-  PayloadAction,
-} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import {
   INotificationsStateInit,
   INotificationsStateInitOptions,
+  TActionNotificationsInitOptionsExtend,
 } from '../../types';
 
 export const initialStateNotificationsInitOptions: Required<INotificationsStateInitOptions> = {
@@ -32,14 +30,14 @@ export const sliceNotificationsInit = createSlice({
   name: 'reducerNotificationsInit',
   initialState: initialStateNotificationsInit,
   reducers: {
-    actionExtendOptions: (state, action: PayloadAction<INotificationsStateInitOptions>) => {
+    actionNotificationsInitOptionsExtend: (state, action: TActionNotificationsInitOptionsExtend) => {
       state.options = { ...action.payload };
     },
   },
 });
 
 export const {
-  actionExtendOptions,
+  actionNotificationsInitOptionsExtend,
 } = sliceNotificationsInit.actions;
 
 export default sliceNotificationsInit.reducer;

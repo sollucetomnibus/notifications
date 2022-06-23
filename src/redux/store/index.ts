@@ -3,7 +3,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import {
   reducerNotificationsUI,
   reducerNotificationsInit,
-  initialStateNotificationsUI,
   initialStateNotificationsInitOptions,
 } from '../slices';
 
@@ -18,15 +17,8 @@ export const store = configureStore({
     stateNotificationsInit: {
       options: initialStateNotificationsInitOptions,
     },
-    // TODO
     stateNotificationsUI: {
-      items: [
-        {
-          id: '12345',
-          isAutoRemovable: true,
-          isVisible: false,
-        },
-      ] || initialStateNotificationsUI,
+      items: [],
     },
   },
 });

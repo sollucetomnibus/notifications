@@ -23,7 +23,7 @@ export const useNotificationsConsumerAutoScroll = (
     block: 'center',
   }), [hasAnimation]);
 
-  const scrollIntoViewHandler = useCallback(async (): Promise<void> => {
+  const consumerScrollIntoViewHandler = useCallback(async (): Promise<void> => {
     if (items.length > 1) {
       if (helperIsMotificationsPlacementTop({
         placement,
@@ -41,6 +41,6 @@ export const useNotificationsConsumerAutoScroll = (
   ]);
 
   useEffect(() => {
-    scrollIntoViewHandler();
-  }, [scrollIntoViewHandler]);
+    consumerScrollIntoViewHandler();
+  }, [consumerScrollIntoViewHandler]);
 };

@@ -4,8 +4,8 @@ import {
   helperNotificationsWaitForTimeout,
 } from '../../helpers';
 import {
-  actionUpdateVisibility,
-  actionRemove,
+  actionNotificationsItemsUpdateVisibility,
+  actionNotificationsItemsRemove,
   selectNotificationsInitOptions,
   selectNotificationsUIItems,
   useNotificationsDispatch,
@@ -23,7 +23,7 @@ export const useNotificationsItemsRemoveAuto = ({
 }: IUseNotificationsItemsRemoveAutoProps): void => {
   const dispatch = useNotificationsDispatch();
 
-  const itemIsAutoRemovable = useNotificationsSelector(selectNotificationsUIItems)
+  const isItemAutoRemovable = useNotificationsSelector(selectNotificationsUIItems)
     .find((item) => item.id === id)?.isAutoRemovable === true;
 
   const {
@@ -31,33 +31,33 @@ export const useNotificationsItemsRemoveAuto = ({
     animationDurationAsMilliseconds,
   } = useNotificationsSelector(selectNotificationsInitOptions);
 
-  const { itemIsVisible } = useNotificationsItemsVisibility({ id });
+  const { isItemVisible } = useNotificationsItemsVisibility({ id });
 
-  const itemAutoRemoveHandler = useCallback(async (): Promise<void> => {
-    if (itemIsAutoRemovable && itemIsVisible) {
+  const itemRemoveAutoHandler = useCallback(async (): Promise<void> => {
+    if (isItemAutoRemovable && isItemVisible) {
       await helperNotificationsWaitForTimeout(autoRemoveDelay);
 
-      dispatch(actionUpdateVisibility({
+      dispatch(actionNotificationsItemsUpdateVisibility({
         id,
         isVisible: false,
       }));
 
       await helperNotificationsWaitForTimeout(animationDurationAsMilliseconds);
 
-      dispatch(actionRemove({
+      dispatch(actionNotificationsItemsRemove({
         id,
       }));
     }
   }, [
     id,
     dispatch,
-    itemIsVisible,
-    itemIsAutoRemovable,
+    isItemVisible,
+    isItemAutoRemovable,
     autoRemoveDelay,
     animationDurationAsMilliseconds,
   ]);
 
   useEffect(() => {
-    itemAutoRemoveHandler();
-  }, [itemAutoRemoveHandler]);
+    itemRemoveAutoHandler();
+  }, [itemRemoveAutoHandler]);
 };

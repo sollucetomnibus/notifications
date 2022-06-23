@@ -15,6 +15,7 @@ const jestConfig: Config.InitialOptions = {
     '<rootDir>/.storybook/',
     '<rootDir>/.storybook-build/',
     '<rootDir>/coverage/',
+    '<rootDir>/dev/',
     '<rootDir>/dist/',
     '<rootDir>/node_modules/',
     '<rootDir>/public/',

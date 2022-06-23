@@ -7,7 +7,7 @@ import {
   selectNotificationsUIItems,
   useNotificationsDispatch,
   useNotificationsSelector,
-  actionUpdateVisibility,
+  actionNotificationsItemsUpdateVisibility,
 } from '../../redux';
 import {
   IUseNotificationsItemsVisibilityProps,
@@ -19,7 +19,7 @@ export const useNotificationsItemsVisibility = ({
 }: IUseNotificationsItemsVisibilityProps): IUseNotificationsItemsVisibilityReturn => {
   const refIsVisible = useRef<boolean>(false);
   const dispatch = useNotificationsDispatch();
-  const itemIsVisible = useNotificationsSelector(selectNotificationsUIItems)
+  const isItemVisible = useNotificationsSelector(selectNotificationsUIItems)
     .find((item) => item.id === id)?.isVisible === true;
 
   const itemVisibilityHandler = useCallback(async (): Promise<void> => {
@@ -28,7 +28,7 @@ export const useNotificationsItemsVisibility = ({
 
       await helperNotificationsWaitForTimeout(100);
 
-      dispatch(actionUpdateVisibility({
+      dispatch(actionNotificationsItemsUpdateVisibility({
         id,
         isVisible: true,
       }));
@@ -42,5 +42,5 @@ export const useNotificationsItemsVisibility = ({
     itemVisibilityHandler();
   }, [itemVisibilityHandler]);
 
-  return { itemIsVisible };
+  return { isItemVisible };
 };

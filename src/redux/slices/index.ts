@@ -1,13 +1,13 @@
 export {
-  actionAddAfter,
-  actionAddBefore,
-  actionUpdateVisibility,
-  actionRemove,
+  actionNotificationsItemsInsertAfter,
+  actionNotificationsItemsInsertBefore,
+  actionNotificationsItemsUpdateVisibility,
+  actionNotificationsItemsRemove,
   initialStateNotificationsUI,
   default as reducerNotificationsUI,
 } from './sliceNotificationsUI';
 export {
-  actionExtendOptions,
+  actionNotificationsInitOptionsExtend,
   initialStateNotificationsInit,
   initialStateNotificationsInitOptions,
   default as reducerNotificationsInit,

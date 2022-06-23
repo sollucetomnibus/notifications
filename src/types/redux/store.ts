@@ -43,12 +43,3 @@ export interface INotificationsStateUIItem {
 export interface INotificationsStateUI {
   items: INotificationsStateUIItem[];
 }
-
-export interface IActionNotificationsItemUpdateVisibility {
-  id: INotificationsStateUIItem['id'];
-  isVisible: INotificationsStateUIItem['isVisible'];
-}
-
-export interface IActionNotificationsItemRemove {
-  id: INotificationsStateUIItem['id'];
-}
