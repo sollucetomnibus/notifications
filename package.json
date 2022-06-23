@@ -1,6 +1,6 @@
 {
   "name": "@sollucetomnibus/notifications",
-  "version": "0.0.1-beta.06",
+  "version": "0.0.1-beta.08",
   "description": "React Toast Notifications",
   "homepage": "https://sollucetomnibus.github.io/notifications/",
   "main": "index.js",

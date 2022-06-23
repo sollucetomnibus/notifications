@@ -1,3 +1,13 @@
+@0.0.1-beta.08
+* **Added:** Dev
+
+---
+
+@0.0.1-beta.07
+* **Added:** Dev
+
+---
+
 @0.0.1-beta.06
 * **Added:** Dev
 
