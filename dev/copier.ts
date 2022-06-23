@@ -27,7 +27,7 @@ export const copier = async (directory: string): Promise<boolean> => new Promise
       join(directory, file),
       (err) => {
         if (err) {
-          terminalError(`to the"${directory}" fodler.`);
+          terminalError(`Something went wrong during copying the "${file}" file to the "${directory}" folder.`);
         }
       },
     );
