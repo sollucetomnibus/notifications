@@ -1,8 +1,15 @@
 import {
+  Constants,
+} from '../constants';
+import {
+  TNotificationsStateInitPlacement,
+} from '../types';
+import {
   helperGenerateUUIDV4,
   helperIsMotificationsPlacementTop,
   helperNotificationsWrapperInsetGenerator,
   helperNotificationsItemsMarginGenerator,
+  helperNotificationsItemsTransformGenerator,
   helperNotificationsWaitForTimeout,
 } from '.';
 
@@ -59,45 +66,45 @@ describe('Helpers', () => {
     it('returns the correct inset by offset and placement', () => {
       expect(
         helperNotificationsWrapperInsetGenerator({
-          offset: '10px',
+          offset: '20px',
           placement: 'top-left',
         }),
-      ).toBe('10px auto auto 10px');
+      ).toBe(`calc(20px - ${Constants.items.marginY}) auto auto 20px`);
 
       expect(
         helperNotificationsWrapperInsetGenerator({
-          offset: '3px',
+          offset: '13px',
           placement: 'top-center',
         }),
-      ).toBe('3px 0px auto 0px');
+      ).toBe(`calc(13px - ${Constants.items.marginY}) 0px auto 0px`);
 
       expect(
         helperNotificationsWrapperInsetGenerator({
-          offset: '12px',
+          offset: '16px',
           placement: 'top-right',
         }),
-      ).toBe('12px 12px auto auto');
+      ).toBe(`calc(16px - ${Constants.items.marginY}) 16px auto auto`);
 
       expect(
         helperNotificationsWrapperInsetGenerator({
-          offset: '8px',
+          offset: '18px',
           placement: 'bottom-left',
         }),
-      ).toBe('auto auto 8px 8px');
+      ).toBe(`auto auto calc(18px - ${Constants.items.marginY}) 18px`);
 
       expect(
         helperNotificationsWrapperInsetGenerator({
-          offset: '6px',
+          offset: '24px',
           placement: 'bottom-center',
         }),
-      ).toBe('auto 0px 6px 0px');
+      ).toBe(`auto 0px calc(24px - ${Constants.items.marginY}) 0px`);
 
       expect(
         helperNotificationsWrapperInsetGenerator({
-          offset: '4px',
+          offset: '28px',
           placement: 'bottom-right',
         }),
-      ).toBe('auto 4px 4px auto');
+      ).toBe(`auto 28px calc(28px - ${Constants.items.marginY}) auto`);
     });
   });
 
@@ -107,37 +114,145 @@ describe('Helpers', () => {
         helperNotificationsItemsMarginGenerator({
           placement: 'top-left',
         }),
-      ).toBe('0px 0px 12px 0px');
+      ).toBe(`0px 0px ${Constants.items.marginY} 0px`);
 
       expect(
         helperNotificationsItemsMarginGenerator({
           placement: 'top-center',
         }),
-      ).toBe('0px 0px 12px 0px');
+      ).toBe(`0px 0px ${Constants.items.marginY} 0px`);
 
       expect(
         helperNotificationsItemsMarginGenerator({
           placement: 'top-right',
         }),
-      ).toBe('0px 0px 12px 0px');
+      ).toBe(`0px 0px ${Constants.items.marginY} 0px`);
 
       expect(
         helperNotificationsItemsMarginGenerator({
           placement: 'bottom-left',
         }),
-      ).toBe('12px 0px 0px 0px');
+      ).toBe(`${Constants.items.marginY} 0px 0px 0px`);
 
       expect(
         helperNotificationsItemsMarginGenerator({
           placement: 'bottom-center',
         }),
-      ).toBe('12px 0px 0px 0px');
+      ).toBe(`${Constants.items.marginY} 0px 0px 0px`);
 
       expect(
         helperNotificationsItemsMarginGenerator({
           placement: 'bottom-right',
         }),
-      ).toBe('12px 0px 0px 0px');
+      ).toBe(`${Constants.items.marginY} 0px 0px 0px`);
+    });
+  });
+
+  describe('helperNotificationsItemsTransformGenerator', () => {
+    it('returns the correct transform by animation, visibility, and placement', () => {
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: false,
+          placement: 'top-left',
+        }),
+      ).toBe(`translateY(-${Constants.items.marginY})`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: true,
+          placement: 'top-left',
+        }),
+      ).toBe(`translateY(0px)`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: false,
+          placement: 'top-center',
+        }),
+      ).toBe(`translateY(-${Constants.items.marginY})`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: true,
+          placement: 'top-center',
+        }),
+      ).toBe(`translateY(0px)`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: false,
+          placement: 'top-right',
+        }),
+      ).toBe(`translateY(-${Constants.items.marginY})`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: true,
+          placement: 'top-right',
+        }),
+      ).toBe(`translateY(0px)`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: false,
+          placement: 'bottom-left',
+        }),
+      ).toBe(`translateY(${Constants.items.marginY})`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: true,
+          placement: 'bottom-left',
+        }),
+      ).toBe(`translateY(0px)`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: false,
+          placement: 'bottom-center',
+        }),
+      ).toBe(`translateY(${Constants.items.marginY})`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: true,
+          placement: 'bottom-center',
+        }),
+      ).toBe(`translateY(0px)`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: false,
+          placement: 'bottom-right',
+        }),
+      ).toBe(`translateY(${Constants.items.marginY})`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: true,
+          isVisible: true,
+          placement: 'bottom-right',
+        }),
+      ).toBe(`translateY(0px)`);
+
+      expect(
+        helperNotificationsItemsTransformGenerator({
+          hasAnimation: false,
+          isVisible: Math.random() < 0.5,
+          placement: 'any-position' as TNotificationsStateInitPlacement,
+        }),
+      ).toBe(`translateY(0px)`);
     });
   });
 

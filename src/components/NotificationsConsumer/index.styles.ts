@@ -1,11 +1,14 @@
 import React from 'react';
 
 import {
-  initialStateNotificationsInitOptions,
-} from '../../redux';
+  Constants,
+} from '../../constants';
 import {
   helperNotificationsWrapperInsetGenerator,
 } from '../../helpers';
+import {
+  initialStateNotificationsInitOptions,
+} from '../../redux';
 import {
   styleCommon,
 } from '../../styles';
@@ -22,7 +25,7 @@ export const styleRoot: React.CSSProperties = {
   maxWidth: '100%',
   maxHeight: `calc(100vh - ${initialStateNotificationsInitOptions.offset})`,
   overflow: 'hidden auto',
-  padding: 0,
+  padding: `${Constants.items.marginY} 0`,
   margin: 'auto',
   opacity: initialStateNotificationsInitOptions.opacity,
   transitionProperty: 'opacity',

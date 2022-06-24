@@ -1,4 +1,7 @@
 import {
+  Constants,
+} from '../constants';
+import {
   TNotificationsStateInitPlacement,
   TNotificationsStateInitUnit,
 } from '../types';
@@ -38,23 +41,23 @@ export const helperNotificationsWrapperInsetGenerator = ({
 }): string => {
   switch (placement) {
     case 'top-left':
-      return `${offset} auto auto ${offset}`;
+      return `calc(${offset} - ${Constants.items.marginY}) auto auto ${offset}`;
 
     case 'top-right':
-      return `${offset} ${offset} auto auto`;
+      return `calc(${offset} - ${Constants.items.marginY}) ${offset} auto auto`;
 
     case 'top-center':
-      return `${offset} 0px auto 0px`;
+      return `calc(${offset} - ${Constants.items.marginY}) 0px auto 0px`;
 
     case 'bottom-left':
-      return `auto auto ${offset} ${offset}`;
+      return `auto auto calc(${offset} - ${Constants.items.marginY}) ${offset}`;
 
     case 'bottom-center':
-      return `auto 0px ${offset} 0px`;
+      return `auto 0px calc(${offset} - ${Constants.items.marginY}) 0px`;
 
     // 'bottom-right'
     default:
-      return `auto ${offset} ${offset} auto`;
+      return `auto ${offset} calc(${offset} - ${Constants.items.marginY}) auto`;
   }
 };
 
@@ -64,10 +67,30 @@ export const helperNotificationsItemsMarginGenerator = ({
   placement: TNotificationsStateInitPlacement;
 }): string => {
   if (helperIsMotificationsPlacementTop({ placement })) {
-    return '0px 0px 12px 0px';
+    return `0px 0px ${Constants.items.marginY} 0px`;
   }
 
-  return '12px 0px 0px 0px';
+  return `${Constants.items.marginY} 0px 0px 0px`;
+};
+
+export const helperNotificationsItemsTransformGenerator = ({
+  hasAnimation,
+  isVisible,
+  placement,
+}: {
+  hasAnimation: boolean;
+  isVisible: boolean;
+  placement: TNotificationsStateInitPlacement;
+}): string => {
+  if (hasAnimation && !isVisible) {
+    if (helperIsMotificationsPlacementTop({ placement })) {
+      return `translateY(-${Constants.items.marginY})`;
+    }
+
+    return `translateY(${Constants.items.marginY})`;
+  }
+
+  return 'translateY(0px)';
 };
 
 export const helperNotificationsWaitForTimeout = (delay: number): Promise<number> => new Promise((resolve) => {

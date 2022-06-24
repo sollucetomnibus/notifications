@@ -11,9 +11,11 @@ import styles from './Notifications.module.scss';
 const App: React.FC = () => {
   const { add } = useNotifications({
     classNameWrapper: styles.wrapper,
-    // offset: '24px',
+    // placement: 'bottom-center',
+    autoRemoveDelay: 6000,
+    borderRadius: '8px',
+    offset: '12px',
     // hasAnimation: false,
-    // placement: 'top-right',
   });
 
   return (

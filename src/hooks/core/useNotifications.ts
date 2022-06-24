@@ -1,12 +1,16 @@
 import {
-  helperGenerateUUIDV4,
+  helperGenerateUUIDV4, helperIsMotificationsPlacementTop,
 } from '../../helpers';
 import {
-  useNotificationsDispatch,
+  actionNotificationsItemsInsertAfter,
   actionNotificationsItemsInsertBefore,
+  useNotificationsDispatch,
+  useNotificationsSelector,
+  selectNotificationsInitOptions,
 } from '../../redux';
 import {
   INotificationsStateInitOptions,
+  INotificationsStateUIItem,
 } from '../../types';
 import {
   useNotificationsInitOptionsExtend,
@@ -16,15 +20,26 @@ export const useNotifications = (
   initOptions: INotificationsStateInitOptions = {},
 ) => {
   const dispatch = useNotificationsDispatch();
+  const {
+    placement,
+  } = useNotificationsSelector(selectNotificationsInitOptions);
 
   useNotificationsInitOptionsExtend(initOptions);
 
   const add = (): void => {
-    dispatch(actionNotificationsItemsInsertBefore({
+    const item: INotificationsStateUIItem = {
       id: helperGenerateUUIDV4(),
       isAutoRemovable: true,
       isVisible: false,
-    }));
+    };
+
+    if (helperIsMotificationsPlacementTop({
+      placement,
+    })) {
+      dispatch(actionNotificationsItemsInsertBefore(item));
+    } else {
+      dispatch(actionNotificationsItemsInsertAfter(item));
+    }
   };
 
   return {
