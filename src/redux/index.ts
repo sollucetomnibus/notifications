@@ -16,6 +16,8 @@ export {
 } from './slices';
 export {
   store,
+} from './store';
+export type {
   TNotificationsState,
   TNotificationsDispatch,
 } from './store';
