@@ -10,11 +10,11 @@
     "moduleResolution": "node",
   },
   "include": [
-    "src"
+    "src",
+    "stories"
   ],
   "exclude": [
     "node_modules",
-    "src/stories",
     "src/**/*.spec.ts",
     "src/**/*.test.ts"
   ]

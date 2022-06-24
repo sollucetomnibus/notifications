@@ -9,10 +9,20 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    {
+      name: '@storybook/preset-scss',
+      options: {
+        cssLoaderOptions: {
+          modules: {
+            auto: true,
+          },
+        },
+      },
+    },
   ],
   framework: '@storybook/react',
   core: {
-    builder: '',
+    builder: 'webpack5',
     disableTelemetry: true,
   },
   features: {
