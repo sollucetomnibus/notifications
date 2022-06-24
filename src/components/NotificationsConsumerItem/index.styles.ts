@@ -14,11 +14,9 @@ import {
 export const styleRoot: React.CSSProperties = {
   ...styleCommon,
   position: 'relative',
+  zIndex: initialStateNotificationsInitOptions.zIndex + 1,
   width: '100%',
   borderRadius: initialStateNotificationsInitOptions.borderRadius,
-  margin: helperNotificationsItemsMarginGenerator({
-    placement: initialStateNotificationsInitOptions.placement,
-  }),
   opacity: 0,
   visibility: 'hidden',
   transitionProperty: 'opacity, visibility, transform',
@@ -30,7 +28,9 @@ export const styleRoot: React.CSSProperties = {
     isVisible: false,
     placement: initialStateNotificationsInitOptions.placement,
   }),
-
+  margin: helperNotificationsItemsMarginGenerator({
+    placement: initialStateNotificationsInitOptions.placement,
+  }),
   // TODO: design
   padding: 20,
   background: '#fc0',

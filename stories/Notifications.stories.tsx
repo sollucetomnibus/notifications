@@ -11,15 +11,22 @@ import styles from './Notifications.module.scss';
 const App: React.FC = () => {
   const { add } = useNotifications({
     classNameWrapper: styles.wrapper,
-    // placement: 'bottom-center',
+    hasBackgroundOverlay: true,
+    backgroundOverlayColor: 'rgba(255, 204, 0, 0.25)',
     autoRemoveDelay: 6000,
     borderRadius: '8px',
     offset: '12px',
+    // placement: 'bottom-center',
     // hasAnimation: false,
   });
 
   return (
-    <div>
+    <div
+      style={{
+        position: 'relative',
+        zIndex: 9999,
+      }}
+    >
       <h1>{'App'}</h1>
       <button
         type="button"

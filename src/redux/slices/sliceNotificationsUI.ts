@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import {
+import type {
   INotificationsStateUI,
   TActionNotificationsItemsInsertAfter,
   TActionNotificationsItemsInsertBefore,

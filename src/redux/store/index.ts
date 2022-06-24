@@ -1,18 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import {
-  reducerNotificationsUI,
   reducerNotificationsInit,
+  reducerNotificationsUI,
   initialStateNotificationsInitOptions,
 } from '../slices';
 
-export const store = configureStore({
+export const notificationsStore = configureStore({
   reducer: {
     stateNotificationsInit: reducerNotificationsInit,
     stateNotificationsUI: reducerNotificationsUI,
   },
-  // TODO
-  devTools: true,
   preloadedState: {
     stateNotificationsInit: {
       options: initialStateNotificationsInitOptions,
@@ -21,8 +19,12 @@ export const store = configureStore({
       items: [],
     },
   },
+  // TODO
+  devTools: true,
 });
 
-export type TNotificationsState = ReturnType<typeof store.getState>;
+export type TNotificationsStore = typeof notificationsStore;
 
-export type TNotificationsDispatch = typeof store.dispatch;
+export type TNotificationsStoreState = ReturnType<typeof notificationsStore.getState>;
+
+export type TNotificationsStoreDispatch = typeof notificationsStore.dispatch;

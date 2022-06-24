@@ -1,10 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import {
-  TNotificationsState,
+  TNotificationsStoreState,
 } from '..';
 
-export const selectNotificationsUI = (state: TNotificationsState) => state.stateNotificationsUI;
+export const selectNotificationsUI = (state: TNotificationsStoreState) => state.stateNotificationsUI;
 
 export const selectNotificationsUIItems = createSelector(
   [selectNotificationsUI],

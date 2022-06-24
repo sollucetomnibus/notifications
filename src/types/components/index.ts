@@ -8,6 +8,6 @@ export interface INotificationsProviderProps {
   children: React.ReactNode;
 }
 
-export interface INotificationsItemProps {
+export interface INotificationsConsumerItemProps {
   props: INotificationsStateUIItem;
 }

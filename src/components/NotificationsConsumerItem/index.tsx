@@ -12,13 +12,13 @@ import {
   selectNotificationsInitOptions,
   useNotificationsSelector,
 } from '../../redux';
-import {
-  INotificationsItemProps,
+import type {
+  INotificationsConsumerItemProps,
 } from '../../types';
 
 import { styleRoot } from './index.styles';
 
-const NotificationsItem: React.FC<INotificationsItemProps> = ({
+const NotificationsConsumerItem: React.FC<INotificationsConsumerItemProps> = ({
   props,
 }) => {
   const {
@@ -27,9 +27,11 @@ const NotificationsItem: React.FC<INotificationsItemProps> = ({
 
   const {
     classNameItems,
+    zIndex,
     placement,
     hasAnimation,
     borderRadius,
+    animationDurationAsMilliseconds,
   } = useNotificationsSelector(selectNotificationsInitOptions);
 
   const { isItemVisible } = useNotificationsItemsVisibility({ id });
@@ -42,10 +44,9 @@ const NotificationsItem: React.FC<INotificationsItemProps> = ({
       data-id={id}
       style={{
         ...styleRoot,
-        margin: helperNotificationsItemsMarginGenerator({
-          placement,
-        }),
+        zIndex: zIndex + 1,
         borderRadius,
+        transitionDuration: `${animationDurationAsMilliseconds}ms`,
         opacity: (!hasAnimation || isItemVisible) ? 1 : 0,
         visibility: (!hasAnimation || isItemVisible) ? 'visible' : 'hidden',
         transform: helperNotificationsItemsTransformGenerator({
@@ -53,9 +54,12 @@ const NotificationsItem: React.FC<INotificationsItemProps> = ({
           isVisible: isItemVisible,
           placement,
         }),
+        margin: helperNotificationsItemsMarginGenerator({
+          placement,
+        }),
       }}
     >{id}</div>
   );
 };
 
-export default NotificationsItem;
+export default NotificationsConsumerItem;

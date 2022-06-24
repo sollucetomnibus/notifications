@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import {
+import type {
   INotificationsStateInit,
   INotificationsStateInitOptions,
   TActionNotificationsInitOptionsExtend,
@@ -19,7 +19,7 @@ export const initialStateNotificationsInitOptions: Required<INotificationsStateI
   backgroundOverlayColor: 'rgba(0, 0, 0, 0.25)',
   borderRadius: '12px',
   hasAnimation: true,
-  animationDurationAsMilliseconds: 360,
+  animationDurationAsMilliseconds: 320,
 };
 
 export const initialStateNotificationsInit: INotificationsStateInit = {

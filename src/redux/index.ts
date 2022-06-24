@@ -3,6 +3,11 @@ export {
   useNotificationsSelector,
 } from './hooks';
 export {
+  getMockNotificationsStore,
+  getMockNotificationsStateUIItem,
+  MockNotificationsProvider,
+} from './mocks';
+export {
   selectNotificationsUIItems,
   selectNotificationsInitOptions,
 } from './selectors';
@@ -15,9 +20,10 @@ export {
   initialStateNotificationsInitOptions,
 } from './slices';
 export {
-  store,
+  notificationsStore,
 } from './store';
 export type {
-  TNotificationsState,
-  TNotificationsDispatch,
+  TNotificationsStore,
+  TNotificationsStoreState,
+  TNotificationsStoreDispatch,
 } from './store';

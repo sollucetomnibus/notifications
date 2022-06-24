@@ -9,7 +9,7 @@ import {
   useNotificationsSelector,
   actionNotificationsItemsUpdateVisibility,
 } from '../../redux';
-import {
+import type {
   IUseNotificationsItemsVisibilityProps,
   IUseNotificationsItemsVisibilityReturn,
 } from '../../types';

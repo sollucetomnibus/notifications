@@ -1,7 +1,7 @@
 import {
   Constants,
 } from '../constants';
-import {
+import type {
   TNotificationsStateInitPlacement,
   TNotificationsStateInitUnit,
 } from '../types';

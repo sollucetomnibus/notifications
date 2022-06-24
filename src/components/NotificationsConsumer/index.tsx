@@ -12,7 +12,8 @@ import {
   useNotificationsConsumerAutoScroll,
 } from '../../hooks';
 
-import NotificationsItem from '../NotificationsItem';
+import NotificationsConsumerItem from '../NotificationsConsumerItem';
+import NotificationsConsumerOverlay from '../NotificationsConsumerOverlay';
 
 import { styleRoot } from './index.styles';
 
@@ -48,9 +49,10 @@ export const NotificationsConsumer: React.FC = () => {
         maxHeight: `calc(100vh - ${offset})`,
       }}
     >
+      <NotificationsConsumerOverlay />
       {
         items.map((item) => (
-          <NotificationsItem
+          <NotificationsConsumerItem
             key={item.id}
             props={item}
           />

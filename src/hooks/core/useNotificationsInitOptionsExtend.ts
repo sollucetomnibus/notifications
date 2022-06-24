@@ -4,7 +4,7 @@ import {
   useNotificationsDispatch,
   actionNotificationsInitOptionsExtend,
 } from '../../redux';
-import {
+import type {
   INotificationsStateInitOptions,
 } from '../../types';
 

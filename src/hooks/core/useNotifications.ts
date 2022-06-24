@@ -1,5 +1,6 @@
 import {
-  helperGenerateUUIDV4, helperIsMotificationsPlacementTop,
+  helperGenerateUUIDV4,
+  helperIsMotificationsPlacementTop,
 } from '../../helpers';
 import {
   actionNotificationsItemsInsertAfter,
@@ -8,7 +9,7 @@ import {
   useNotificationsSelector,
   selectNotificationsInitOptions,
 } from '../../redux';
-import {
+import type {
   INotificationsStateInitOptions,
   INotificationsStateUIItem,
 } from '../../types';

@@ -1,11 +1,11 @@
 import {
+  getMockNotificationsStore,
+} from '../mocks';
+import {
   initialStateNotificationsInit,
   initialStateNotificationsInitOptions,
   initialStateNotificationsUI,
 } from '../slices';
-import {
-  store,
-} from '../store';
 import {
   selectNotificationsInit,
   selectNotificationsInitOptions,
@@ -17,7 +17,7 @@ describe('Selectors', () => {
   describe('selectNotificationsInit', () => {
     it('returns the Notifications Init state', () => {
       expect(
-        selectNotificationsInit(store.getState()),
+        selectNotificationsInit(getMockNotificationsStore().getState()),
       ).toStrictEqual(initialStateNotificationsInit);
     });
   });
@@ -25,7 +25,7 @@ describe('Selectors', () => {
   describe('selectNotificationsInitOptions', () => {
     it('returns the Notifications Init Options state', () => {
       expect(
-        selectNotificationsInitOptions(store.getState()),
+        selectNotificationsInitOptions(getMockNotificationsStore().getState()),
       ).toStrictEqual(initialStateNotificationsInitOptions);
     });
   });
@@ -33,7 +33,7 @@ describe('Selectors', () => {
   describe('selectNotificationsUI', () => {
     it('returns the Notifications UI state', () => {
       expect(
-        selectNotificationsUI(store.getState()),
+        selectNotificationsUI(getMockNotificationsStore().getState()),
       ).toStrictEqual(initialStateNotificationsUI);
     });
   });
@@ -41,7 +41,7 @@ describe('Selectors', () => {
   describe('selectNotificationsUIItems', () => {
     it('returns the Notifications UI Items state', () => {
       expect(
-        selectNotificationsUIItems(store.getState()),
+        selectNotificationsUIItems(getMockNotificationsStore().getState()),
       ).toStrictEqual([]);
     });
   });

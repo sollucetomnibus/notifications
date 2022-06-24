@@ -2,9 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import {
-  store,
+  notificationsStore,
 } from '../../redux';
-import {
+import type {
   INotificationsProviderProps,
 } from '../../types';
 import {
@@ -14,7 +14,7 @@ import {
 export const NotificationsProvider: React.FC<INotificationsProviderProps> = ({
   children,
 }) => (
-  <Provider store={store}>
+  <Provider store={notificationsStore}>
     {children}
     <NotificationsConsumer />
   </Provider>

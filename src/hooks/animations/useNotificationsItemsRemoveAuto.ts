@@ -11,7 +11,7 @@ import {
   useNotificationsDispatch,
   useNotificationsSelector,
 } from '../../redux';
-import {
+import type {
   IUseNotificationsItemsRemoveAutoProps,
 } from '../../types';
 import {

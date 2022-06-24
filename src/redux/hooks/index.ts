@@ -5,10 +5,10 @@ import {
 } from 'react-redux';
 
 import {
-  TNotificationsDispatch,
-  TNotificationsState,
+  TNotificationsStoreState,
+  TNotificationsStoreDispatch,
 } from '../store';
 
-export const useNotificationsDispatch: () => TNotificationsDispatch = useDispatch;
+export const useNotificationsSelector: TypedUseSelectorHook<TNotificationsStoreState> = useSelector;
 
-export const useNotificationsSelector: TypedUseSelectorHook<TNotificationsState> = useSelector;
+export const useNotificationsDispatch: () => TNotificationsStoreDispatch = useDispatch;
